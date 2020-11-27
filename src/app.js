@@ -1,44 +1,39 @@
+'use strict';
+
 window.scrollTo(0, 0);
 
-const $parent = document.querySelector('body'),
-  $buttons = document.querySelector('.button__block'),
-  $tabloid = document.querySelector('#ChosenCar'),
-  $tabloidAfter = document.querySelector('#tabloidAfter'),
-  $ad = document.querySelector('#ad'),
-  $musicPlayer = document.querySelector('.music-player');
+const $parent = document.querySelector('body');
+const $buttons = document.querySelector('.button__block');
+const $tabloid = document.querySelector('#ChosenCar');
+const $tabloidAfter = document.querySelector('#tabloidAfter');
+const $ad = document.querySelector('#ad');
+const $musicPlayer = document.querySelector('.music-player');
 
-`#${Math.floor(Math.random() * 16777215).toString(16)}`; //  рандомный цвет
+const BLUE_CAR = '../images/SimpleBlue.svg';
+const GREEN_CAR = '../images/SimpleBrightGreen.svg';
+const DARKBLUE_CAR = '../images/SimpleDarkBlue.svg';
+const PINK_CAR = '../images/SimplePinkCar.svg';
+
+const track1 = '../music/track_1.mp3'; 
+const track2 = '../music/track_2.mp3';
+const track3 = '../music/track_3.mp3';
+const track4 = '../music/track_4.mp3';
+const track5 = '../music/track_5.mp3';
+const track6 = '../music/track_6.mp3';
+const track7 = '../music/track_7.mp3';
+const track8 = '../music/track_8.mp3';
+const sound1 = '../music/car-sound-1.mp3';
+const sound2 = '../music/car-sound-2.mp3';
+const sound3 = '../music/car-sound-3.mp3';
+const sound4 = '../music/car-sound-4.mp3';
 
 const random = arr => arr[Math.floor(Math.random() * arr.length)];
 
-const BLUE_CAR = '../images/SimpleBlue.svg',
-  GREEN_CAR = '../images/SimpleBrightGreen.svg',
-  DARKBLUE_CAR = '../images/SimpleDarkBlue.svg',
-  PINK_CAR = '../images/SimplePinkCar.svg';
+const music = [track1, track2, track3, track4, track5, track6, track7, track8];
+const sounds = [sound1, sound2, sound3, sound4];
 
-const track1 = '../music/Lil Jon The East Side Boyz feat Ying Yang Twins - Get Low.mp3', 
-  track2 = '../music/The Crystal Method - Born Too Slow (Album Version).mp3',
-  track3 = '../music/Linkin Park - Faint.mp3',
-  track4 = '../music/Static-X - The Only.mp3',
-  track5 = '../music/Rob Zombie - Two-Lane Blacktop.mp3',
-  track6 = '../music/Andy Hunter - The Wonders of You.mp3',
-  track7 = '../music/Jerk - Sucked In.mp3',
-  track8 = '../music/Story of the Year - And the Hero Will Drown.mp3',
-  sound1 = '../music/car-sound-1.mp3',
-  sound2 = '../music/car-sound-2.mp3',
-  sound3 = '../music/car-sound-3.mp3',
-  sound4 = '../music/car-sound-4.mp3';
-
-const music = [track1, track2, track3, track4, track5, track6, track7, track8],
-  sounds = [sound1, sound2, sound3, sound4];
-
-const randomTrack = random(music),
-  randomSound = random(sounds);
-
-//console.log(randomTrack);
-
-const posY = [10, 130, 245, 360];
-const randomPos = random(posY);  //  рандмоное положение машинки, плохо работает.
+const randomTrack = random(music);
+const randomSound = random(sounds);
 
 class Car {
   constructor(x, y, pic, value) {
@@ -48,44 +43,35 @@ class Car {
     this.pic = pic;
     this.speed = 15;
     this.speedValue;
+
     this.drawCar();
 
-    //--------------------//
     this.position = 0;
     this.positionValue;
-  }  //  создаем машинку
+  };
 
-  drawCar() {
+  drawCar = () => {
     this.$carTag = document.createElement('img');
     this.$carTag.src = this.pic;
     
-    this.$carTag.style = (
-      `width: 200px; 
-      position: absolute;
-      left: ${this.x}px;
-      top: ${this.y}px`
-    );
-    // this.$carTag.style.width = '200px';
-    // this.$carTag.style.position = 'absolute';
-    // this.$carTag.style.left = `${this.x}px`;
-    // this.$carTag.style.top = `${this.y}px`;
+    this.$carTag.style.width = '200px';
+    this.$carTag.style.position = 'absolute';
+    this.$carTag.style.left = `${this.x}px`;
+    this.$carTag.style.top = `${this.y}px`;
 
     $parent.append(this.$carTag);
-  }  // рисуем машинку
+  };
 
-  moveRight() {
+  moveRight = () => {
     this.speedValue = Math.floor(Math.random() * (this.speed));
     this.x += this.speedValue;
     this.$carTag.style.left = `${this.x}px`;
+
     carSound.play();
-//---------------------------------------------//  
-    // this.y += Math.floor(Math.random() * (this.positionValue));
-    // this.$carTag.style.top += `${randomPos}px`;
-    // this.$carTag.style.down -= `${randomPos}px`;
-  } // езда машинки
+  };
 }
 
-class sound {
+class Sound {
   constructor(src) {
     this.$carNoise = document.createElement('audio');
     this.$carNoise.src = src;
@@ -94,27 +80,29 @@ class sound {
     this.$carNoise.style.display = 'none';
 
     $parent.append(this.$carNoise);
-    this.play = () => {
-      this.$carNoise.play();
-    };
-    this.stop = () => {
-      this.$carNoise.pause();
-    };
   }
-} // звук машинки 
-
-const blue = new Car(0, 10, BLUE_CAR, 'Blue'),
-  green = new Car(0, 130, GREEN_CAR, 'Green'),
-  darkBlue = new Car(0, 245, DARKBLUE_CAR, 'Dark Blue'),
-  pink = new Car(0, 360, PINK_CAR, 'Pink'),
-  carSound = new sound(randomSound);
-
-$musicPlayer.src = randomTrack;  //  рандомный муз трек
   
-let statistics = [],
-  index = null,
-  choice = '',
-  racePercents = null;
+  play = () => {
+    this.$carNoise.play();
+  };
+
+  stop = () => {
+    this.$carNoise.pause();
+  };
+};
+
+const blue = new Car(0, 10, BLUE_CAR, 'Blue');
+const green = new Car(0, 130, GREEN_CAR, 'Green');
+const darkBlue = new Car(0, 245, DARKBLUE_CAR, 'Dark Blue');
+const pink = new Car(0, 360, PINK_CAR, 'Pink');
+const carSound = new Sound(randomSound);
+
+$musicPlayer.src = randomTrack;
+  
+let statistics = [];
+let index = null;
+let choice = '';
+let racePercents = null;
 
 const chosenCar = obj => {
   obj.textContent = `Your car is ${choice}`;
@@ -136,7 +124,7 @@ const chosenCar = obj => {
   }
 };
 
-const raceProgress = (obj, objAfter) => { //!! obj - обязательно принимать, иначе баги!!
+const raceProgress = (obj, objAfter) => {
   racePercents = Math.floor(statistics[index] * 100 / 30000);
   objAfter.textContent = racePercents;
 };
@@ -144,7 +132,8 @@ const raceProgress = (obj, objAfter) => { //!! obj - обязательно пр
 const moveParameter = list => {
   let indexArray = 0;
   let max = list[0];
-  for (let i in list) {  // !! for...of - не применять, иначе баги!!
+
+  for (let i in list) {
     list[i] > max && (max = list[i], indexArray = i);
   }
 
@@ -157,14 +146,10 @@ const startDrive = timerArgument => {
   darkBlue.moveRight();
   pink.moveRight();
 
-  statistics = [
-    blue.x,
-    green.x,
-    darkBlue.x,
-    pink.x,
-  ];
+  statistics = [blue.x, green.x, darkBlue.x, pink.x];
   
   index = moveParameter(statistics, index);
+
   raceProgress($tabloid, $tabloidAfter);
   window.scrollTo(statistics[index] - 1000, 0);
 
@@ -195,73 +180,63 @@ const startDrive = timerArgument => {
       block.textContent = `Your ${choice} Car lose!`;
     }
 
-    blue.x >= 30000 ? (blue.value === choice ? winner($ad) : loser($ad)) :
-      green.x >= 30000 ? (green.value === choice ? winner($ad) : loser($ad)) :
-        darkBlue.x >= 30000 ? (darkBlue.value === choice ? winner($ad) : loser($ad)) :
-          (pink.value === choice ? winner($ad) : loser($ad));
-
-    // если будут баги, использовать код ниже  
-
-    // if (blue.x >= 30000) {
-    //   blue.value === choice ? winner($ad) : loser($ad);
-    // } else if (green.x >= 30000) {
-    //   green.value === choice ? winner($ad) : loser($ad);
-    // } else if (darkBlue.x >= 30000) {
-    //   darkBlue.value === choice ? winner($ad) : loser($ad);
-    // } else if (pink.x >= 30000) {
-    //   pink.value === choice ? winner($ad) : loser($ad);
-    // }
+    if (blue.x >= 30000) {
+      blue.value === choice ? winner($ad) : loser($ad);
+    } else if (green.x >= 30000) {
+      green.value === choice ? winner($ad) : loser($ad);
+    } else if (darkBlue.x >= 30000) {
+      darkBlue.value === choice ? winner($ad) : loser($ad);
+    } else if (pink.x >= 30000) {
+      pink.value === choice ? winner($ad) : loser($ad);
+    }
 
     fadeOut($tabloid);
     fadeOut($tabloidAfter);
     setTimeout(endButton, 2000);
   }
-} //  тут сама гонка
+};
 
 const fadeOut = obj => {
-  obj.style.opacity = '1';
   const arr = ['0.9', '0.8', '0.7', '0.6', '0.5', '0.4', '0.3', '0.2', '0.1', '0'];
-  actionTimeout = 20;
+  let actionTimeout = 20;
+
+  obj.style.opacity = '1';
+
   arr.forEach((number, index) => {
-    setTimeout(() => {
-      obj.style.opacity = number;
-    }, actionTimeout * index);
-  }); //  fadeOut
-}
+    setTimeout(() => obj.style.opacity = number, actionTimeout * index);
+  });
+};
 
 const fadeIn = obj => {
-  obj.style.opacity = '0';
   const arr = ['0.1', '0.2', '0.3', '0.4', '0.5', '0.6', '0.7', '0.8', '0.9', '1'];
-  actionTimeout = 20;
+  let actionTimeout = 20;
+
+  obj.style.opacity = '0';
+
   arr.forEach((number, index) => {
-    setTimeout(() => {
-      obj.style.opacity = number;
-    }, actionTimeout * index);
+    setTimeout(() => obj.style.opacity = number, actionTimeout * index);
   });
-} //  fadeIn
+};
 
 const raceTimer = () => {
-  let timer = setInterval(() => {
-    startDrive(timer);
-  }, 2);
-} //  интервал езды
+  let timer = setInterval(() => startDrive(timer), 2);
+};
 
 const countdown = block => {
-  let actionTimeout = 1000;
   const arr = [3, 2, 1, 'GO!'];
+  let actionTimeout = 1000;
+
   arr.forEach((number, index) => {
-    setTimeout(() => {
-      block.textContent = number;
-    }, actionTimeout * index);
-  }); //  отчет до начала гонки
-}
+    setTimeout(() => block.textContent = number, actionTimeout * index);
+  });
+};
 
 const endButton = () => {
   const $parentBlock = document.querySelector('.form__placer');
-  $parentBlock.style.display = 'flex';
-  $parentBlock.style.justifyContent = 'center';
-
   const $refresh = document.createElement('button');
+
+  $parentBlock.style.display = 'flex';
+  $parentBlock.style.justifyContent = 'center';  
   $refresh.style.position = 'fixed';
   $refresh.style.fontFamily = 'Neon';
   $refresh.style.color = 'palevioletred';
@@ -273,14 +248,14 @@ const endButton = () => {
   $refresh.style.backgroundColor = 'white';
   $refresh.style.marginTop = '54px';
   $refresh.style.opacity = '0';
-  
   $refresh.textContent = 'Try again';
+
   $parentBlock.append($refresh);
 
-  fadeIn($refresh); //  кнопка try again
+  fadeIn($refresh);
 
-  $refresh.addEventListener('click', () => location.reload()); // что за location.reload() ?
-}
+  $refresh.addEventListener('click', () => location.reload());
+};
 
 $buttons.addEventListener('click', ({ target }) => {
   if (target.type === 'button') {

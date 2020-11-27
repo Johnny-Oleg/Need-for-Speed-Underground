@@ -89,7 +89,7 @@ body {
   position: fixed;
   width: 100vw;
   height: calc(100vh - 470px);
-  background-size: cover; /*!*/
+  /* background-size: cover; */ /*!*/
   font-family: "Streamster";
   font-size: 55px;
   color: palevioletred;
