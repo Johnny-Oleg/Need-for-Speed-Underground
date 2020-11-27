@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href='styles.css'>
+  <title>Need for Speed Underground</title>
+</head>
+
+<body>
+  <div class="race__track">
+    <p id="ad"></p>
+    <div class="race__track-finish">
+      <span>Finish!</span>
+    </div>
+  </div>
+  <div class="form__placer">
+    <div class="form__tabloid" id="tabloid">
+      <span id="ChosenCar">Choose your Car</span>
+      <p id='tabloidAfter' style="text-align: center; font-family: 'RoadRage'"></p>
+    </div>
+    <div class="button__block">
+      <button type="button" name="state" id="bluecar" value="Blue">Blue</button>
+      <button type="button" name="state" id="greencar" value="Green">Green</button>
+      <button type="button" name="state" id="darkbluecar" value="Dark Blue">Dark Blue</button>
+      <button type="button" name="state" id="pinkcar" value="Pink">Pink</button>
+    </div>
+    <audio class="music-player" autoplay controls loop src="">
+        Your browser does not support the <code>audio</code> element.
+    </audio>
+    <div class="rotate__animate">
+      <img class="rotate__animate-logo--front" src="../images/NFSU.svg" alt="">
+      <img class="rotate__animate-logo--back" src="../images/NFSU.svg" alt="">
+    </div>
+  </div>
+  
+  <script src="app.js"></script>
+</body>
+
+</html>

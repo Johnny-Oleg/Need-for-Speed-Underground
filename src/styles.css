@@ -1,0 +1,181 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  outline: none;
+}
+
+@font-face {
+  font-family: "Streamster";
+  src: url("../fonts/Streamster.woff2") format("woff2"),
+    url("../fonts/Streamster.woff") format("woff");
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "RoadRage";
+  src: url("../fonts/RoadRage.woff2") format("woff2"),
+    url("../fonts/RoadRage.woff") format("woff");
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Neon";
+  src: url("../fonts/Neon.woff2") format("woff2"),
+    url("../fonts/Neon.woff") format("woff");
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+
+body {
+  color: palevioletred;
+  overflow-x: hidden;
+  max-width: 1440px;
+  max-height: 820px;
+}
+
+.race__track {
+  background-image: url(../images/road.jpg);
+  background-size: 120px auto;
+  height: 470px;
+  background-repeat: repeat-x repeat-y;
+  width: 30250px;
+  font-size: 100px;
+  position: relative;
+  /* border: 20px solid #000; */
+  /* border-left:none;
+  border-right:none; */
+}
+
+.race__track p {
+  font-family: "RoadRage";
+  text-align: center;
+  width: max-content;
+  position: absolute;
+  top: 50%;
+  left: 50vw;
+  transform: translate(-50%, -50%);
+  color: aliceblue;
+}
+
+.race__track-finish {
+  background-color: rgba(46, 41, 41, 0.6);
+  width: 470px;
+  transform: rotate(1.25turn);
+  position: absolute;
+  right: -156px;
+  top: 33%;
+  text-align: center;
+  font-family: "RoadRage";
+  color: aliceblue;
+}
+
+.button__block {
+  margin-top: 20px;
+  display: flex;
+  justify-content: space-around;
+  color: palevioletred;
+  transition: opacity 1s;
+}
+
+.form__placer {
+  padding: 25px 0 0;
+  background-image: url(../images/Retrowave.jpg);
+  position: fixed;
+  width: 100vw;
+  height: calc(100vh - 470px);
+  background-size: cover; /*!*/
+  font-family: "Streamster";
+  font-size: 55px;
+  color: palevioletred;
+}
+
+.button__block > button {
+  font-family: "Neon";
+  font-size: 20px;
+  color: #b789ff;
+  width: 150px;
+  padding: 30px;
+  border: none;
+  border-radius: 10px 10px 50% 50%;
+  cursor: pointer;
+}
+
+.form__tabloid {
+  width: max-content;
+  margin: 0 auto;
+}
+
+#bluecar {
+  background-color: #32bffe;
+}
+
+#greencar {
+  background-color: #affe14;
+}
+
+#darkbluecar {
+  background-color: #3278fe;
+}
+
+#pinkcar {
+  background-color: #fe32e8;
+}
+
+button:hover {
+  box-shadow: inset 0 0 0 10px #fdb5b5;
+  transition: all 0.3s ease;
+}
+
+.music-player {
+  width: 250px;
+  height: 54px;
+  padding: 10px;
+  position: absolute;
+  right: 71.2rem;
+  bottom: 15.5rem;
+}
+
+.rotate__animate {
+  position: absolute;
+  left: 72.3rem;
+  bottom: 18.7rem;
+  width: 200px;
+  height: auto;
+  transform-style: preserve-3d;
+  transition: all 0.5s ease;
+  animation: rotation 4s infinite linear;
+}
+
+.rotate__animate-logo--front {
+  position: absolute;
+  width: 200px;
+  height: auto;
+  border-radius: 30px;
+  position: absolute;
+  backface-visibility: hidden;
+}
+
+.rotate__animate-logo--back {
+  position: absolute;
+  width: 200px;
+  height: auto;
+  border-radius: 30px;
+  position: absolute;
+  backface-visibility: hidden;
+  transform: rotateY(180deg);
+}
+
+@keyframes rotation {
+  from {
+    transform: rotate3D(0, 0.5, 0, 0deg);
+  }
+  to {
+    transform: rotate3D(0, 0.5, 0, 180deg);;
+  }
+}
