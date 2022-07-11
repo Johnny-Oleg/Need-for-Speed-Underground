@@ -134,7 +134,10 @@ const moveParameter = list => {
   let max = list[0];
 
   for (let i in list) {
-    list[i] > max && (max = list[i], indexArray = i);
+    if (list[i] > max) {
+      max = list[i];
+      indexArray = i;
+    }
   }
 
   return indexArray;
@@ -147,7 +150,6 @@ const startDrive = timerArgument => {
   pink.moveRight();
 
   statistics = [blue.x, green.x, darkBlue.x, pink.x];
-  
   index = moveParameter(statistics, index);
 
   raceProgress($tabloid, $tabloidAfter);
@@ -155,14 +157,16 @@ const startDrive = timerArgument => {
 
   if (statistics[index] >= 30000) {
     clearInterval(timerArgument);
+    carSound.stop();
 
     const winner = block => {
       fadeIn(block);
 
       block.style.position = 'fixed';
       block.style.zIndex = '10';
-      block.style.top = '25%';
-      block.style.fontSize = '80px';
+      block.style.top = '25vh';       // 25%
+      // block.style.left = '50%';       // 50vh
+      block.style.fontSize = '60px';
       block.style.color = '#eac84c';
 
       block.textContent = `Congratulations, ${choice} Car won!!!`;
@@ -173,8 +177,9 @@ const startDrive = timerArgument => {
 
       block.style.position = 'fixed';
       block.style.zIndex = '10';
-      block.style.top = '25%';
-      block.style.fontSize = '80px';
+      block.style.top = '25vh';       // 25%
+      // block.style.left = '50%';       // 50vh
+      block.style.fontSize = '60px';
       block.style.color = '#c90000';
       
       block.textContent = `Your ${choice} Car lose!`;
@@ -263,13 +268,13 @@ $buttons.addEventListener('click', ({ target }) => {
 
     fadeOut($buttons);
     fadeOut($tabloid);
+    $musicPlayer.play();
 
     setTimeout(() => {
       $buttons.style.display = 'none';
 
       countdown($ad);
-      chosenCar($tabloid);
-      
+      chosenCar($tabloid);    
       setTimeout(raceTimer, 3000)
     }, 1000);
   }

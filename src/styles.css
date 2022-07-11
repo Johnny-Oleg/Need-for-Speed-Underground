@@ -35,8 +35,6 @@
 body {
   color: palevioletred;
   overflow-x: hidden;
-  max-width: 1440px;
-  max-height: 820px;
 }
 
 .race__track {
@@ -47,9 +45,6 @@ body {
   width: 30250px;
   font-size: 100px;
   position: relative;
-  /* border: 20px solid #000; */
-  /* border-left:none;
-  border-right:none; */
 }
 
 .race__track p {
@@ -137,23 +132,26 @@ button:hover {
   height: 54px;
   padding: 10px;
   position: absolute;
-  right: 71.2rem;
-  bottom: 15.5rem;
+  /* right: 71.2rem;
+  bottom: 15.5rem; */
+  top: 40px;
+  left: 15%;
 }
 
 .rotate__animate {
-  position: absolute;
-  left: 72.3rem;
-  bottom: 18.7rem;
   width: 200px;
   height: auto;
+  position: absolute;
+  right: 15%;
+  top: 40px;
+  /* left: 72.3rem;
+  bottom: 18.7rem; */
   transform-style: preserve-3d;
   transition: all 0.5s ease;
   animation: rotation 4s infinite linear;
 }
 
 .rotate__animate-logo--front {
-  position: absolute;
   width: 200px;
   height: auto;
   border-radius: 30px;
@@ -162,7 +160,6 @@ button:hover {
 }
 
 .rotate__animate-logo--back {
-  position: absolute;
   width: 200px;
   height: auto;
   border-radius: 30px;
