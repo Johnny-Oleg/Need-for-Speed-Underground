@@ -9,23 +9,23 @@ const $tabloidAfter = document.querySelector('#tabloidAfter');
 const $ad = document.querySelector('#ad');
 const $musicPlayer = document.querySelector('.music-player');
 
-const BLUE_CAR = '../images/SimpleBlue.svg';
-const GREEN_CAR = '../images/SimpleBrightGreen.svg';
-const DARKBLUE_CAR = '../images/SimpleDarkBlue.svg';
-const PINK_CAR = '../images/SimplePinkCar.svg';
+const BLUE_CAR = './images/SimpleBlue.svg';
+const GREEN_CAR = './images/SimpleBrightGreen.svg';
+const DARKBLUE_CAR = './images/SimpleDarkBlue.svg';
+const PINK_CAR = './images/SimplePinkCar.svg';
 
-const track1 = '../music/track_1.mp3'; 
-const track2 = '../music/track_2.mp3';
-const track3 = '../music/track_3.mp3';
-const track4 = '../music/track_4.mp3';
-const track5 = '../music/track_5.mp3';
-const track6 = '../music/track_6.mp3';
-const track7 = '../music/track_7.mp3';
-const track8 = '../music/track_8.mp3';
-const sound1 = '../music/car-sound-1.mp3';
-const sound2 = '../music/car-sound-2.mp3';
-const sound3 = '../music/car-sound-3.mp3';
-const sound4 = '../music/car-sound-4.mp3';
+const track1 = './music/track_1.mp3'; 
+const track2 = './music/track_2.mp3';
+const track3 = './music/track_3.mp3';
+const track4 = './music/track_4.mp3';
+const track5 = './music/track_5.mp3';
+const track6 = './music/track_6.mp3';
+const track7 = './music/track_7.mp3';
+const track8 = './music/track_8.mp3';
+const sound1 = './music/car-sound-1.mp3';
+const sound2 = './music/car-sound-2.mp3';
+const sound3 = './music/car-sound-3.mp3';
+const sound4 = './music/car-sound-4.mp3';
 
 const random = arr => arr[Math.floor(Math.random() * arr.length)];
 
